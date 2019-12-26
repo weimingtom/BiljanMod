@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{BED85696-67E9-426E-8E95-D3E1C7C311DB}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Lint</RootNamespace>
+    <AssemblyName>Lint</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\LuaGlobalAttribute.cs" />
+    <Compile Include="Attributes\LuaHideAttribute.cs" />
+    <Compile Include="Debugging\DebugHelper.cs" />
+    <Compile Include="Debugging\DebugTable.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Exceptions\LuaException.cs" />
+    <Compile Include="Exceptions\LuaScriptException.cs" />
+    <Compile Include="Extensions\IDictionary.Extensions.cs" />
+    <Compile Include="Extensions\MethodBase.Extensions.cs" />
+    <Compile Include="Extensions\String.Extensions.cs" />
+    <Compile Include="Extensions\Type.Extensions.cs" />
+    <Compile Include="Extensions\TypeMetadata.cs" />
+    <Compile Include="Native\LuaCoroutine.cs" />
+    <Compile Include="Native\LuaFunction.cs" />
+    <Compile Include="Native\LuaFunctionDelegates.cs" />
+    <Compile Include="Native\LuaHooks\EventCode.cs" />
+    <Compile Include="Native\LuaHooks\EventMask.cs" />
+    <Compile Include="Native\LuaHooks\LuaDebug.cs" />
+    <Compile Include="Native\LuaHooks\LuaHook.cs" />
+    <Compile Include="Native\LuaLibrary.cs" />
+    <Compile Include="Native\LuaObject.cs" />
+    <Compile Include="Native\LuaRegistry.cs" />
+    <Compile Include="Native\LuaTable.cs" />
+    <Compile Include="Native\LuaThreadStatus.cs" />
+    <Compile Include="Native\LuaType.cs" />
+    <Compile Include="Native\OS\FunctionLoader.cs" />
+    <Compile Include="Native\OS\NativeMethods.cs" />
+    <Compile Include="ObjectTranslation\EventWrapper.cs" />
+    <Compile Include="ObjectTranslation\IndexerWrapper.cs" />
+    <Compile Include="ObjectTranslation\LuaFunctionWrapper.cs" />
+    <Compile Include="ObjectTranslation\ObjectTranslator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="libs\32bit\lua53.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libs\64bit\lua53.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attributes" />
+    <Folder Include="Debugging" />
+    <Folder Include="Exceptions" />
+    <Folder Include="Extensions" />
+    <Folder Include="libs" />
+    <Folder Include="libs\32bit" />
+    <Folder Include="libs\64bit" />
+    <Folder Include="Native" />
+    <Folder Include="Native\LuaHooks" />
+    <Folder Include="Native\OS" />
+    <Folder Include="ObjectTranslation" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
